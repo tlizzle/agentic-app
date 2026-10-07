@@ -50,7 +50,7 @@ agentic-app/
 
 **Ticket agent.** Sub-agent with an `McpToolset` over stdio to `mcp_server/tickets.py`. Tools: `create_ticket`, `get_ticket`, `list_tickets`. `require_confirmation` is set on `create_ticket` only, so ADK web shows the approval dialog before the ticket is written.
 
-**RAG (`rag.py`).** On import: read `knowledge/*.md`, split by heading into chunks, embed them, cache vectors to `.cache/embeddings.json` keyed by content hash so restarts are instant and free. On query: embed, cosine, return top 3 with file name and snippet. Plain Python plus `numpy` is not required; a list comprehension on small vectors is enough.
+**RAG (`rag.py`).** On import: read `knowledge/*.md`, split by heading into chunks, embed them, cache vectors to `.cache/embeddings.json` keyed by content hash so restarts are instant and free. On query: embed, cosine, return top 3 with file name and snippet. Plain Python is enough for the vector math; no `numpy`.
 
 **MCP server (`tickets.py`).** `MCPServer` with three tools, state in `mcp_server/tickets.json`. Runs as a subprocess spawned by ADK through `StdioConnectionParams`, so no separate terminal.
 
