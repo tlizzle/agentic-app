@@ -1,6 +1,6 @@
 import os
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.8-flash"
 EMBEDDING_MODEL = "gemini-embedding-001"
 
 
