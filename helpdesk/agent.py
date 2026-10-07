@@ -1,13 +1,9 @@
-import os
-
 from google.adk.agents import LlmAgent
 
+from .config import MODEL, require_api_key
 from .prompts import COORDINATOR_INSTRUCTION
 
-MODEL = "gemini-2.5-flash"
-
-if not os.environ.get("GOOGLE_API_KEY"):
-    raise RuntimeError("GOOGLE_API_KEY is not set. Copy .env.example to helpdesk/.env and add your AI Studio key.")
+require_api_key()
 
 root_agent = LlmAgent(
     name="coordinator",
