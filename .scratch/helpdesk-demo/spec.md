@@ -41,7 +41,7 @@ A small Employee helpdesk assistant that runs with two commands from a fresh clo
 - Guardrail: a before-model callback on the Coordinator matches the latest Employee message against a short rule list (another person's salary, password, home address). On a match it returns a fixed refusal and the model is never called.
 - Memory: a plugin writes the Session to ADK's in-process memory service once at the end of each run, after all Handoffs complete. The Coordinator has a load_memory tool scoped to the Employee (see ADR 0002).
 - Sessions use ADK web's default local storage; nothing custom.
-- Evaluation: one evalset file with three Eval Cases: a policy question expecting the search tool and a cited answer, a Ticket creation expecting the create tool, and a blocked request expecting the refusal. Runnable from the Eval tab and from the `adk eval` command.
+- Evaluation: one evalset file with three Eval Cases: a policy question expecting the search tool and a cited answer, a Ticket lookup over MCP expecting the get tool (creation needs an Approval reply the eval runner cannot replay), and a blocked request expecting the refusal. Runnable from the Eval tab and from the `adk eval` command.
 - Handbook content: three or four short English documents for a fictional company covering leave, IT equipment, expenses and remote work.
 - Configuration failures are loud: a missing API key stops startup with a clear message.
 
