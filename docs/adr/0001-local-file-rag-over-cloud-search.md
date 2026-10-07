@@ -1,0 +1,3 @@
+# Local file RAG instead of Vertex AI Search or a vector database
+
+The demo must run from a fresh clone with only a free AI Studio API key. We retrieve Handbook Passages with Gemini embeddings and an in-process cosine search over a handful of markdown files, caching vectors on disk. Vertex AI Search, RAG Engine and hosted vector stores were rejected because each needs a Google Cloud project or an external service, which would make the demo harder to run and would hide the retrieval mechanics the interviewer wants to see. In a real deployment this module is the seam to swap for a managed retriever; if embedding calls ever stop being free, swap the ranking for BM25 and keep the interface.

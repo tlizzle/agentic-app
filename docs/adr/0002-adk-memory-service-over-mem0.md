@@ -1,0 +1,3 @@
+# ADK's in-process memory service instead of mem0
+
+Memory follows the pattern from the author's earlier ADK projects: a plugin writes the Session to memory once per run after every Handoff has finished, and a load_memory tool recalls it scoped to the Employee. The backing store is ADK's built-in in-memory service rather than mem0, because mem0 needs either a hosted account or a local vector store plus an LLM extractor, both of which add dependencies and live-demo risk. The trade-off is accepted: Memory resets when the server restarts and search is keyword-based, which is enough to show cross-Session recall.
