@@ -4,7 +4,7 @@
 
 **Blocked by:** None (can start immediately)
 
-**Status:** ready-for-agent
+**Status:** done
 
 - [ ] `uv sync` then `uv run adk web` serves the app with no other steps
 - [ ] The Coordinator introduces itself as the company helpdesk and answers small talk
