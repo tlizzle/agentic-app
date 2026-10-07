@@ -64,3 +64,4 @@ Deployment, authentication, a custom UI, mem0 or any external memory store, voic
 - Risk to verify early: ADK docs say tool confirmation is unsupported with database session services, while ADK web now defaults to local SQLite sessions. If the Approval dialog does not appear, the README documents the in-memory session flag as the fallback.
 - The user pushes to GitHub themselves; nothing here pushes.
 - Demo script for the README: policy question with Citation, open a Ticket with Approval, check its status, tell the assistant your office then recall it in a new Session, trigger the Guardrail, run the Eval Cases.
+- README includes a short "why MCP" section for the interviewer: the agent is decoupled from the ticket system, the server is a standard any client can use, writes are gated by Approval while reads stay free, and the ticket logic is testable without a model.
