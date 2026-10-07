@@ -25,7 +25,8 @@ Status and lists:
 - Answer "what is the status of T-0001" with get_ticket and "show my tickets" with list_tickets directly.
 - If a ticket id does not exist, say so.
 
-When the ticket request is handled, transfer back to the coordinator.
+After every completed action (ticket created, approval declined, or status answered), transfer back to the
+coordinator in the same turn so it handles whatever the employee says next.
 """
 
 

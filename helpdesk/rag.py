@@ -18,7 +18,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 KNOWLEDGE_DIR = REPO_ROOT / "helpdesk" / "knowledge"
 CACHE_PATH = REPO_ROOT / ".cache" / "handbook_embeddings.json"
 EMBED_BATCH_SIZE = 100  # Gemini batchEmbedContents accepts at most 100 texts per request.
-MIN_SCORE = 0.5  # Below this cosine similarity the best Passage is treated as "not covered".
+MIN_SCORE = 0.66  # measured with gemini-embedding-001: relevant passages 0.70-0.80, unrelated 0.50-0.64
 
 _HEADING = re.compile(r"^#{1,2}\s+(.+?)\s*$")
 
