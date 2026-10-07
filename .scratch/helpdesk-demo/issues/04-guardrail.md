@@ -4,7 +4,7 @@
 
 **Blocked by:** 01 Chat skeleton
 
-**Status:** ready-for-agent
+**Status:** done
 
 - [ ] Before-model callback on the Coordinator with a short rule list
 - [ ] Fixed refusal text that also says what the assistant can help with

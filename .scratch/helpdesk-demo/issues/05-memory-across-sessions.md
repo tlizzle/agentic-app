@@ -4,7 +4,7 @@
 
 **Blocked by:** 01 Chat skeleton
 
-**Status:** ready-for-agent
+**Status:** done
 
 - [ ] Plugin writes the Session to ADK's in-process memory service once per run
 - [ ] Coordinator has a load_memory tool and is instructed to use it for questions about the Employee

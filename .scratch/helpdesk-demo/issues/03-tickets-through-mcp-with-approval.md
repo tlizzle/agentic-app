@@ -4,7 +4,7 @@
 
 **Blocked by:** 01 Chat skeleton
 
-**Status:** ready-for-agent
+**Status:** done
 
 - [ ] MCP server with create_ticket, get_ticket, list_tickets backed by one JSON file, launched by ADK over stdio
 - [ ] Ticket fields: id, title, category, status, requester, created time

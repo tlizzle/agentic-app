@@ -4,7 +4,7 @@
 
 **Blocked by:** 01 Chat skeleton
 
-**Status:** ready-for-agent
+**Status:** done
 
 - [ ] Three or four short English Handbook documents for a fictional company (leave, IT equipment, expenses, remote work)
 - [ ] Retrieval splits documents into Passages at headings, embeds with Gemini, caches vectors on disk keyed by content hash, and returns the top three by cosine with Citations
