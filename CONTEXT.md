@@ -13,8 +13,8 @@ One heading-delimited section of a Handbook document, the unit that is retrieved
 _Avoid_: chunk, snippet, document
 
 **Citation**:
-The Handbook document and heading a Passage came from, shown with every grounded answer.
-_Avoid_: source, reference
+The Handbook document and heading a Passage came from, shown with every grounded answer as a `Source:` line.
+_Avoid_: reference
 
 **Ticket**:
 A support request an Employee opens with the helpdesk, with a title, category, status and id.

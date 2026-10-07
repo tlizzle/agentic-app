@@ -14,9 +14,8 @@ from .config import EMBEDDING_MODEL
 
 Embedder = Callable[[list[str]], list[list[float]]]
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-KNOWLEDGE_DIR = REPO_ROOT / "helpdesk" / "knowledge"
-CACHE_PATH = REPO_ROOT / ".cache" / "handbook_embeddings.json"
+HANDBOOK_DIR = Path(__file__).resolve().parent / "handbook"
+CACHE_PATH = HANDBOOK_DIR.parent.parent / ".cache" / "handbook_embeddings.json"
 EMBED_BATCH_SIZE = 100  # Gemini batchEmbedContents accepts at most 100 texts per request.
 MIN_SCORE = 0.66  # measured with gemini-embedding-001: relevant passages 0.70-0.80, unrelated 0.50-0.64
 
@@ -81,11 +80,11 @@ def _key(text: str) -> str:
 class HandbookIndex:
     """In-process index over every .md file in a directory, with vectors cached on disk by content hash."""
 
-    def __init__(self, knowledge_dir: Path, embed: Embedder, cache_path: Path):
+    def __init__(self, handbook_dir: Path, embed: Embedder, cache_path: Path):
         self._embed = embed
         self._cache_path = cache_path
         self.passages = [
-            p for path in sorted(knowledge_dir.glob("*.md")) for p in split_passages(path.read_text(), path.name)
+            p for path in sorted(handbook_dir.glob("*.md")) for p in split_passages(path.read_text(), path.name)
         ]
         cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
         missing = [p.text for p in self.passages if _key(p.text) not in cache]
@@ -101,11 +100,17 @@ class HandbookIndex:
         return sorted(scored, key=lambda r: r.score, reverse=True)[:k]
 
 
+_client = None
+
+
 def gemini_embed(texts: list[str]) -> list[list[float]]:
     """Default embedder: Gemini embeddings through google-genai, chunked to the API batch limit."""
-    from google import genai
+    global _client
+    if _client is None:
+        from google import genai
 
-    client = genai.Client()
+        _client = genai.Client()
+    client = _client
     vectors: list[list[float]] = []
     for start in range(0, len(texts), EMBED_BATCH_SIZE):
         response = client.models.embed_content(model=EMBEDDING_MODEL, contents=texts[start : start + EMBED_BATCH_SIZE])
@@ -128,13 +133,13 @@ def search_handbook(query: str) -> dict:
     """
     global _index
     if _index is None:
-        _index = HandbookIndex(KNOWLEDGE_DIR, gemini_embed, CACHE_PATH)
+        _index = HandbookIndex(HANDBOOK_DIR, gemini_embed, CACHE_PATH)
     results = _index.search(query, k=3)
     return {
         "passages": [
             {
-                "document": r.passage.document,
-                "heading": r.passage.heading,
+                "document": r.citation.document,
+                "heading": r.citation.heading,
                 "text": r.passage.text,
                 "score": round(r.score, 3),
             }

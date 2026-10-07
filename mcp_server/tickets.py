@@ -5,16 +5,12 @@ Reset the store with `rm mcp_server/tickets.json`.
 """
 
 import os
-import sys
 from pathlib import Path
 
+import store  # the script directory is always first on sys.path
 from mcp.server.mcpserver import MCPServer
 
-# Make `mcp_server.store` importable no matter which cwd ADK spawns us from.
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parent))
-
-from mcp_server import store  # noqa: E402
 
 TICKETS_PATH = Path(os.environ.get("TICKETS_PATH", HERE / "tickets.json"))
 

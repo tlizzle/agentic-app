@@ -9,7 +9,7 @@ What it shows:
 |---|---|
 | **RAG** | Policy answers come from handbook files, with a `Source:` citation. Trace shows the `search_handbook` call. |
 | **Actions over MCP** | Tickets are created and read through an in-repo MCP server that ADK launches over stdio. |
-| **Human approval** | The UI pops a confirmation dialog before `create_ticket` runs. Decline and nothing is written. |
+| **Human approval** | The UI pops an approval dialog before `create_ticket` runs. Decline and nothing is written. |
 | **Multi-agent** | A coordinator hands off to a knowledge agent or a ticket agent. Visible in the agent graph and trace. |
 | **Guardrail** | Requests for another person's salary, password or address are refused before any model call. |
 | **Sessions + memory** | Sessions persist in the UI. A fact told in one session is recalled in a new one via `load_memory`. |
@@ -67,7 +67,7 @@ helpdesk/                 the ADK app that adk web discovers
   guardrail.py            before_model_callback with a short rule list
   memory.py               plugin that writes each session to ADK's memory service after the run
   sub_agents/             knowledge_agent (RAG) and ticket_agent (MCP toolset with approval on create)
-  knowledge/              four short handbook documents
+  handbook/               four short handbook documents
   helpdesk_demo.evalset.json, test_config.json   eval cases and thresholds
 mcp_server/
   tickets.py              MCP server over stdio: create_ticket, get_ticket, list_tickets
@@ -79,10 +79,10 @@ CONTEXT.md                glossary of project terms
 
 ## Models and free-tier quotas
 
-The model is set by `HELPDESK_MODEL` in `helpdesk/.env` (default `gemini-3.5-flash`). Free-tier quotas are
+The model is set by `HELPDESK_MODEL` in `helpdesk/.env` (default `gemini-3.5-flash-lite`, which had the most free-tier headroom when this was built). Free-tier quotas are
 **per model per day** and can be small: at the time of writing `gemini-3.5-flash` allowed 20 requests per day,
 and one demo turn uses 2 to 4 requests. If you hit `429 RESOURCE_EXHAUSTED`, switch to another model such as
-`gemini-3.5-flash-lite` and restart. Check your limits at https://aistudio.google.com/rate-limit. Transient
+`gemini-3.5-flash` or `gemini-flash-latest` and restart. Check your limits at https://aistudio.google.com/rate-limit. Transient
 `503` responses are retried automatically. Embeddings are cached in `.cache/` so the handbook is embedded once.
 
 ## Develop

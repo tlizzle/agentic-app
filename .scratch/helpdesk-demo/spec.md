@@ -65,3 +65,7 @@ Deployment, authentication, a custom UI, mem0 or any external memory store, voic
 - The user pushes to GitHub themselves; nothing here pushes.
 - Demo script for the README: policy question with Citation, open a Ticket with Approval, check its status, tell the assistant your office then recall it in a new Session, trigger the Guardrail, run the Eval Cases.
 - README includes a short "why MCP" section for the interviewer: the agent is decoupled from the ticket system, the server is a standard any client can use, writes are gated by Approval while reads stay free, and the ticket logic is testable without a model.
+
+## Comments
+
+- 2026-10-07 code review (standards + spec axes): fixed Guardrail false positives on first-person and company questions; renamed the handbook folder to match the glossary; simplified path handling and the MCP server import; reused the embedding client; removed the placeholder test; default model switched to gemini-3.5-flash-lite because the free tier allowed 20 requests/day on gemini-3.5-flash. Left as-is: the missing-key error is a one-line RuntimeError inside a Python traceback rather than a bare line; Knowledge Agent hand-back is instructed but ADK routes the next message to the Coordinator anyway because the specialist has no sub-agents; the "requester" Ticket field stays as the ticket specified it.

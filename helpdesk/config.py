@@ -5,7 +5,7 @@ from google.genai import types
 
 # Free-tier quotas are per model per day and small (gemini-3.5-flash: 20 requests/day when this was built).
 # Switch models without touching code: HELPDESK_MODEL=gemini-3.5-flash-lite in helpdesk/.env.
-MODEL_NAME = os.environ.get("HELPDESK_MODEL", "gemini-3.5-flash")
+MODEL_NAME = os.environ.get("HELPDESK_MODEL", "gemini-3.5-flash-lite")
 EMBEDDING_MODEL = "gemini-embedding-001"
 
 # The free tier also returns transient 503/429 under load; retry a few times instead of failing the turn.
