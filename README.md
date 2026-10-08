@@ -32,6 +32,8 @@ Open http://localhost:8000 and pick **helpdesk**.
 
 ## Demo script (about 5 minutes)
 
+For the full presenter's walkthrough with talking points and Q&A, see [DEMO.md](DEMO.md).
+
 1. **RAG with citation.** Ask: `How many days of annual leave do I get?`
    The coordinator hands off to the knowledge agent, which searches the handbook and answers with
    `Source: leave.md › Annual leave`. Open the Trace tab to show the handoff and the tool call.
