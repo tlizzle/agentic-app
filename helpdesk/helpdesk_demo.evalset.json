@@ -3,170 +3,6 @@
   "name": "helpdesk_demo",
   "eval_cases": [
     {
-      "eval_id": "policy_question_with_citation",
-      "conversation": [
-        {
-          "invocation_id": "e-312889d5-d1a7-40ef-a547-f06f7721d0aa",
-          "user_content": {
-            "parts": [
-              {
-                "text": "How many days of annual leave do I get?"
-              }
-            ],
-            "role": "user"
-          },
-          "final_response": {
-            "parts": [
-              {
-                "text": "Every full-time employee receives 20 days of paid annual leave per calendar year. Leave accrues monthly from your start date and is pro-rated in your first year. Up to 5 unused days may be carried over into the next year, expiring on 31 March.\n\nSource: leave.md › Annual leave",
-                "thought_signature": "EmAKXgFpFH0Tjjt0ZHn9QwwGegHsn4xwd0kfhYjaHZLKdUsw2bbY0Kxn44tTIuycEzHBFlauytTdQhI4XWpoocBR2MsetrjxmsxsurkeuaZSPoXXZO7cIRpHcAXN7awtrJc="
-              }
-            ],
-            "role": "model"
-          },
-          "intermediate_data": {
-            "invocation_events": [
-              {
-                "author": "coordinator",
-                "content": {
-                  "parts": [
-                    {
-                      "function_call": {
-                        "id": "call_265591",
-                        "args": {
-                          "agent_name": "knowledge_agent"
-                        },
-                        "name": "transfer_to_agent"
-                      },
-                      "thought_signature": "EmAKXgFpFH0TOlnMXa1G7UVpRJmt5bryrMTlyvfCYCEcG9USDZEF3kMpW8G8mzfaoF2E9qSXu5KTVBCJDUt0oiIWwP0JPm030yQKDOgMKeXVZFol8IoG3yGChp6X-GsnrF0="
-                    }
-                  ],
-                  "role": "model"
-                },
-                "usage_metadata": {
-                  "candidates_token_count": 22,
-                  "prompt_token_count": 677,
-                  "prompt_tokens_details": [
-                    {
-                      "modality": "TEXT",
-                      "token_count": 677
-                    }
-                  ],
-                  "total_token_count": 699
-                },
-                "model_version": "gemini-3.5-flash-lite"
-              },
-              {
-                "author": "coordinator",
-                "content": {
-                  "parts": [
-                    {
-                      "function_response": {
-                        "id": "call_265591",
-                        "name": "transfer_to_agent",
-                        "response": {
-                          "result": null
-                        }
-                      }
-                    }
-                  ],
-                  "role": "user"
-                }
-              },
-              {
-                "author": "knowledge_agent",
-                "content": {
-                  "parts": [
-                    {
-                      "function_call": {
-                        "id": "call_223892",
-                        "args": {
-                          "query": "How many days of annual leave do I get?"
-                        },
-                        "name": "search_handbook"
-                      },
-                      "thought_signature": "EmAKXgFpFH0Ta_syDZpqx8Py5YmkX79sl8Gz38ClqbFpNE2rYaPRSOmsee2_HU34CGKbCDRMOZZwBxOXhW8iCr79eMoxkRSICBgQzyidselXJR_5i4a3YRFyuGDrzk_Vhcw="
-                    }
-                  ],
-                  "role": "model"
-                },
-                "usage_metadata": {
-                  "candidates_token_count": 26,
-                  "prompt_token_count": 966,
-                  "prompt_tokens_details": [
-                    {
-                      "modality": "TEXT",
-                      "token_count": 966
-                    }
-                  ],
-                  "total_token_count": 992
-                },
-                "model_version": "gemini-3.5-flash-lite"
-              },
-              {
-                "author": "knowledge_agent",
-                "content": {
-                  "parts": [
-                    {
-                      "function_response": {
-                        "id": "call_223892",
-                        "name": "search_handbook",
-                        "response": {
-                          "passages": [
-                            {
-                              "document": "leave.md",
-                              "heading": "Annual leave",
-                              "text": "Every full-time employee receives 20 days of paid annual leave per calendar year.\nLeave accrues monthly from your start date and is pro-rated in your first year.\nUp to 5 unused days may be carried over into the next year; they expire on 31 March.",
-                              "score": 0.771
-                            },
-                            {
-                              "document": "leave.md",
-                              "heading": "Sick leave",
-                              "text": "You get 10 days of paid sick leave per year.\nTell your manager before 10:00 on the first day you are out.\nA doctor's note is required for absences longer than 3 consecutive days.",
-                              "score": 0.668
-                            },
-                            {
-                              "document": "remote-work.md",
-                              "heading": "Working from another country",
-                              "text": "Working from a country other than your contracted one is allowed for up to 20 days per year.\nTell HR at least 2 weeks before you travel so tax and insurance can be checked.",
-                              "score": 0.646
-                            }
-                          ],
-                          "found": true
-                        }
-                      }
-                    }
-                  ],
-                  "role": "user"
-                }
-              },
-              {
-                "author": "knowledge_agent",
-                "usage_metadata": {
-                  "candidates_token_count": 67,
-                  "prompt_token_count": 1247,
-                  "prompt_tokens_details": [
-                    {
-                      "modality": "TEXT",
-                      "token_count": 1247
-                    }
-                  ],
-                  "total_token_count": 1314
-                },
-                "model_version": "gemini-3.5-flash-lite"
-              }
-            ]
-          },
-          "creation_timestamp": 1791445362.142535
-        }
-      ],
-      "session_input": {
-        "app_name": "helpdesk",
-        "user_id": "demo-user"
-      },
-      "creation_timestamp": 1791445366.586526
-    },
-    {
       "eval_id": "guardrail_blocks_salary_request",
       "conversation": [
         {
@@ -350,6 +186,170 @@
         "user_id": "demo-user"
       },
       "creation_timestamp": 1791445370.312852
+    },
+    {
+      "eval_id": "policy_question_with_citation",
+      "conversation": [
+        {
+          "invocation_id": "e-701ca0f4-cc75-4ce0-b53f-df2de3e1ae2f",
+          "user_content": {
+            "parts": [
+              {
+                "text": "How many days of annual leave do I get?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Every full-time employee receives 20 days of paid annual leave per calendar year.\nSource: leave.md › Annual leave",
+                "thought_signature": "EmAKXgFpFH0TehN7pOGjnFdnpp4lZ87XlRW0JnYqKf77cX2YN-8YB4VL_1p3cVkunCiD1lNau0bdwEQQn2zaWmkC3XPx4yY1pvC3mqdT2cXn0uX9ytF1oyn7W6LdH_MWyzc="
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "coordinator",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_414449",
+                        "args": {
+                          "agent_name": "knowledge_agent"
+                        },
+                        "name": "transfer_to_agent"
+                      },
+                      "thought_signature": "EmAKXgFpFH0TyohgLoKau_jvoDyVzrR9x5yu2xJcdUPZqCYTnq8iFLGdBlihYLbjR7MoONuC8fNc_Mrvn0qazA7G41sZYSbK-QHZx8BP4Cq8pZC02skwK_J8URx8zxGVG7c="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "usage_metadata": {
+                  "candidates_token_count": 22,
+                  "prompt_token_count": 677,
+                  "prompt_tokens_details": [
+                    {
+                      "modality": "TEXT",
+                      "token_count": 677
+                    }
+                  ],
+                  "total_token_count": 699
+                },
+                "model_version": "gemini-3.5-flash-lite"
+              },
+              {
+                "author": "coordinator",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_414449",
+                        "name": "transfer_to_agent",
+                        "response": {
+                          "result": null
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "knowledge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_320912",
+                        "args": {
+                          "query": "How many days of annual leave do I get?"
+                        },
+                        "name": "search_handbook"
+                      },
+                      "thought_signature": "EmAKXgFpFH0TRhJQUrP5AGR-8qG_JMLiHxtrztvdt9s0MxdxIeg_qW-uodZdRwbZRPlGMtb2BeFZgNtKVsAEywbCGLJD0L5S3tJ_XDy0UE6UvlCzudFgsmthbvOfDGlAXSY="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "usage_metadata": {
+                  "candidates_token_count": 26,
+                  "prompt_token_count": 990,
+                  "prompt_tokens_details": [
+                    {
+                      "modality": "TEXT",
+                      "token_count": 990
+                    }
+                  ],
+                  "total_token_count": 1016
+                },
+                "model_version": "gemini-3.5-flash-lite"
+              },
+              {
+                "author": "knowledge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_320912",
+                        "name": "search_handbook",
+                        "response": {
+                          "passages": [
+                            {
+                              "document": "leave.md",
+                              "heading": "Annual leave",
+                              "text": "Every full-time employee receives 20 days of paid annual leave per calendar year.\nLeave accrues monthly from your start date and is pro-rated in your first year.\nUp to 5 unused days may be carried over into the next year; they expire on 31 March.",
+                              "score": 0.771
+                            },
+                            {
+                              "document": "leave.md",
+                              "heading": "Sick leave",
+                              "text": "You get 10 days of paid sick leave per year.\nTell your manager before 10:00 on the first day you are out.\nA doctor's note is required for absences longer than 3 consecutive days.",
+                              "score": 0.668
+                            },
+                            {
+                              "document": "remote-work.md",
+                              "heading": "Working from another country",
+                              "text": "Working from a country other than your contracted one is allowed for up to 20 days per year.\nTell HR at least 2 weeks before you travel so tax and insurance can be checked.",
+                              "score": 0.646
+                            }
+                          ],
+                          "found": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "knowledge_agent",
+                "usage_metadata": {
+                  "candidates_token_count": 27,
+                  "prompt_token_count": 1271,
+                  "prompt_tokens_details": [
+                    {
+                      "modality": "TEXT",
+                      "token_count": 1271
+                    }
+                  ],
+                  "total_token_count": 1298
+                },
+                "model_version": "gemini-3.5-flash-lite"
+              }
+            ]
+          },
+          "creation_timestamp": 1791446415.244212
+        }
+      ],
+      "session_input": {
+        "app_name": "helpdesk",
+        "user_id": "demo-user"
+      },
+      "creation_timestamp": 1791446420.214956
     }
   ],
   "creation_timestamp": 1791346264.0258172
