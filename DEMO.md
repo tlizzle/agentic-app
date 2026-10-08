@@ -16,7 +16,7 @@
 
 ## 2. 它怎麼運作
 
-畫面上方、`helpdesk` 旁邊的樹狀圖示，可以打開「組織圖」是為 **root-sub handoff 架構**：
+畫面上方、`helpdesk` 旁邊的樹狀圖示，可以打開「組織圖」，這是一個 **root-sub handoff 架構**：
 
 ```
 總機 (coordinator)
