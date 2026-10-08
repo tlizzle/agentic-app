@@ -8,6 +8,7 @@ from google.adk.tools.mcp_tool import McpToolset, StdioConnectionParams
 from mcp import StdioServerParameters
 
 from ..config import MODEL
+from ..guardrail import block_sensitive_requests
 
 TICKET_SERVER = Path(__file__).resolve().parents[2] / "mcp_server" / "tickets.py"
 
@@ -18,16 +19,29 @@ Opening a ticket:
   hardware, software, access, or other. Ask only if you really cannot tell.
 - Use the requester "employee" unless the employee has told you their name.
 - Call create_ticket. The employee is asked to approve it first.
-- If it was created, report the ticket id (for example "Opened ticket T-0003 for you").
+- Always tell the employee the outcome in plain words, for example
+  "Opened ticket T-0003 for you: Laptop screen flickering (hardware). It is now open."
 - If the employee declined the approval, say plainly that no ticket was created. Do not retry.
 
 Status and lists:
 - Answer "what is the status of T-0001" with get_ticket and "show my tickets" with list_tickets directly.
 - If a ticket id does not exist, say so.
 
-After every completed action (ticket created, approval declined, or status answered), transfer back to the
-coordinator in the same turn so it handles whatever the employee says next.
+Never end a turn without a reply to the employee. If the employee asks about anything that is not a
+support ticket (policy questions, facts about themselves), transfer to the coordinator instead of answering.
 """
+
+
+def _explain_rejection(tool, args, tool_context, tool_response):
+    """after_tool_callback: when the employee declines the Approval, replace ADK's terse error with an
+    instruction the model cannot misread, so it reports the cancellation instead of calling the tool again."""
+    if isinstance(tool_response, dict) and tool_response.get("error") == "This tool call is rejected.":
+        return {
+            "status": "declined",
+            "instruction": "The employee declined the approval. Do NOT call create_ticket again. "
+            "Reply exactly: 'No ticket was created.'",
+        }
+    return None
 
 
 def _needs_approval(**args) -> bool:
@@ -40,6 +54,8 @@ ticket_agent = LlmAgent(
     model=MODEL,
     description="Opens support tickets (with employee approval) and reports ticket status or lists.",
     instruction=TICKET_INSTRUCTION,
+    before_model_callback=block_sensitive_requests,
+    after_tool_callback=_explain_rejection,
     tools=[
         McpToolset(
             connection_params=StdioConnectionParams(

@@ -1,6 +1,7 @@
 from google.adk.agents import LlmAgent
 
 from ..config import MODEL
+from ..guardrail import block_sensitive_requests
 from ..rag import search_handbook
 
 KNOWLEDGE_INSTRUCTION = """You are the Knowledge Agent for the Acme Corp employee helpdesk.
@@ -15,8 +16,8 @@ For every question:
    Source: <document> › <heading>
    Use one line per passage if you relied on more than one.
 
-Once the question is answered (or declared not covered), transfer back to the coordinator agent
-so it can handle whatever the employee asks next.
+If the employee asks about anything that is not a handbook policy question (support tickets, facts about
+themselves), transfer to the coordinator instead of answering.
 """
 
 knowledge_agent = LlmAgent(
@@ -24,5 +25,6 @@ knowledge_agent = LlmAgent(
     model=MODEL,
     description="Answers Acme Corp policy questions (leave, IT equipment, expenses, remote work) from the employee handbook, with citations.",
     instruction=KNOWLEDGE_INSTRUCTION,
+    before_model_callback=block_sensitive_requests,
     tools=[search_handbook],
 )
