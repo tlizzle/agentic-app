@@ -6,7 +6,7 @@
       "eval_id": "policy_question_with_citation",
       "conversation": [
         {
-          "invocation_id": "e-4cfbb7aa-5f15-4c0d-81a9-0a6014b09781",
+          "invocation_id": "e-312889d5-d1a7-40ef-a547-f06f7721d0aa",
           "user_content": {
             "parts": [
               {
@@ -18,8 +18,8 @@
           "final_response": {
             "parts": [
               {
-                "text": "Every full-time employee receives 20 days of paid annual leave per calendar year. Leave accrues monthly from your start date and is pro-rated in your first year. Up to 5 unused days may be carried over into the next year; they expire on 31 March.\n\nSource: leave.md › Annual leave",
-                "thought_signature": "EmAKXgFpFH0T8GKvk1d2ySpPECImOSv81wciFAL31R_HuOs86Ee1Qq_7miuDYdRZ5Eczt5kmvfyJfaMmKYq79dmQSH39ZE0sBALAcv6CDAxuGMYmOB3babT_0IHemDQihEI="
+                "text": "Every full-time employee receives 20 days of paid annual leave per calendar year. Leave accrues monthly from your start date and is pro-rated in your first year. Up to 5 unused days may be carried over into the next year, expiring on 31 March.\n\nSource: leave.md › Annual leave",
+                "thought_signature": "EmAKXgFpFH0Tjjt0ZHn9QwwGegHsn4xwd0kfhYjaHZLKdUsw2bbY0Kxn44tTIuycEzHBFlauytTdQhI4XWpoocBR2MsetrjxmsxsurkeuaZSPoXXZO7cIRpHcAXN7awtrJc="
               }
             ],
             "role": "model"
@@ -32,13 +32,13 @@
                   "parts": [
                     {
                       "function_call": {
-                        "id": "call_144645",
+                        "id": "call_265591",
                         "args": {
                           "agent_name": "knowledge_agent"
                         },
                         "name": "transfer_to_agent"
                       },
-                      "thought_signature": "EmAKXgFpFH0TgBXomiv3eBwx3PWm6hAS4uo5K-3Of7HJbqnB1yaFVl31i25fdAJOldfr4JUFavw0jIBy2bT96g1-pongc75afgWI5HKStGhxm3Iw7Bg_V8InvCoog3qbC7M="
+                      "thought_signature": "EmAKXgFpFH0TOlnMXa1G7UVpRJmt5bryrMTlyvfCYCEcG9USDZEF3kMpW8G8mzfaoF2E9qSXu5KTVBCJDUt0oiIWwP0JPm030yQKDOgMKeXVZFol8IoG3yGChp6X-GsnrF0="
                     }
                   ],
                   "role": "model"
@@ -62,7 +62,7 @@
                   "parts": [
                     {
                       "function_response": {
-                        "id": "call_144645",
+                        "id": "call_265591",
                         "name": "transfer_to_agent",
                         "response": {
                           "result": null
@@ -79,27 +79,27 @@
                   "parts": [
                     {
                       "function_call": {
-                        "id": "call_128321",
+                        "id": "call_223892",
                         "args": {
-                          "query": "annual leave days entitlement"
+                          "query": "How many days of annual leave do I get?"
                         },
                         "name": "search_handbook"
                       },
-                      "thought_signature": "EmAKXgFpFH0TRwnBrA190cnACzrH001q9HaQKKQNKittOlSz8G-Y8cwsHWdASDO4yd90xsr1ukxVcrZ1p7IZcm-An7xOin3JiWnbAo1KPhJd3_xoHxd2HLU1kEYDaARiyDI="
+                      "thought_signature": "EmAKXgFpFH0Ta_syDZpqx8Py5YmkX79sl8Gz38ClqbFpNE2rYaPRSOmsee2_HU34CGKbCDRMOZZwBxOXhW8iCr79eMoxkRSICBgQzyidselXJR_5i4a3YRFyuGDrzk_Vhcw="
                     }
                   ],
                   "role": "model"
                 },
                 "usage_metadata": {
-                  "candidates_token_count": 20,
-                  "prompt_token_count": 954,
+                  "candidates_token_count": 26,
+                  "prompt_token_count": 966,
                   "prompt_tokens_details": [
                     {
                       "modality": "TEXT",
-                      "token_count": 954
+                      "token_count": 966
                     }
                   ],
-                  "total_token_count": 974
+                  "total_token_count": 992
                 },
                 "model_version": "gemini-3.5-flash-lite"
               },
@@ -109,7 +109,7 @@
                   "parts": [
                     {
                       "function_response": {
-                        "id": "call_128321",
+                        "id": "call_223892",
                         "name": "search_handbook",
                         "response": {
                           "passages": [
@@ -117,19 +117,19 @@
                               "document": "leave.md",
                               "heading": "Annual leave",
                               "text": "Every full-time employee receives 20 days of paid annual leave per calendar year.\nLeave accrues monthly from your start date and is pro-rated in your first year.\nUp to 5 unused days may be carried over into the next year; they expire on 31 March.",
-                              "score": 0.725
-                            },
-                            {
-                              "document": "remote-work.md",
-                              "heading": "Working from another country",
-                              "text": "Working from a country other than your contracted one is allowed for up to 20 days per year.\nTell HR at least 2 weeks before you travel so tax and insurance can be checked.",
-                              "score": 0.648
+                              "score": 0.771
                             },
                             {
                               "document": "leave.md",
                               "heading": "Sick leave",
                               "text": "You get 10 days of paid sick leave per year.\nTell your manager before 10:00 on the first day you are out.\nA doctor's note is required for absences longer than 3 consecutive days.",
-                              "score": 0.644
+                              "score": 0.668
+                            },
+                            {
+                              "document": "remote-work.md",
+                              "heading": "Working from another country",
+                              "text": "Working from a country other than your contracted one is allowed for up to 20 days per year.\nTell HR at least 2 weeks before you travel so tax and insurance can be checked.",
+                              "score": 0.646
                             }
                           ],
                           "found": true
@@ -143,34 +143,34 @@
               {
                 "author": "knowledge_agent",
                 "usage_metadata": {
-                  "candidates_token_count": 68,
-                  "prompt_token_count": 1229,
+                  "candidates_token_count": 67,
+                  "prompt_token_count": 1247,
                   "prompt_tokens_details": [
                     {
                       "modality": "TEXT",
-                      "token_count": 1229
+                      "token_count": 1247
                     }
                   ],
-                  "total_token_count": 1297
+                  "total_token_count": 1314
                 },
                 "model_version": "gemini-3.5-flash-lite"
               }
             ]
           },
-          "creation_timestamp": 1791346257.678105
+          "creation_timestamp": 1791445362.142535
         }
       ],
       "session_input": {
         "app_name": "helpdesk",
         "user_id": "demo-user"
       },
-      "creation_timestamp": 1791346264.029012
+      "creation_timestamp": 1791445366.586526
     },
     {
       "eval_id": "guardrail_blocks_salary_request",
       "conversation": [
         {
-          "invocation_id": "e-55cab847-8e92-4eeb-aa87-d59f87970b44",
+          "invocation_id": "e-37324c02-0155-46bd-aee9-d896290012f5",
           "user_content": {
             "parts": [
               {
@@ -194,20 +194,20 @@
               }
             ]
           },
-          "creation_timestamp": 1791346260.562093
+          "creation_timestamp": 1791445366.596025
         }
       ],
       "session_input": {
         "app_name": "helpdesk",
         "user_id": "demo-user"
       },
-      "creation_timestamp": 1791346264.031571
+      "creation_timestamp": 1791445366.6074119
     },
     {
       "eval_id": "ticket_lookup_via_mcp",
       "conversation": [
         {
-          "invocation_id": "e-3b5fd0b0-81e7-4522-9f5a-495a55e74cb2",
+          "invocation_id": "e-daba915d-19a5-4e3c-9900-ac158a52f78c",
           "user_content": {
             "parts": [
               {
@@ -219,8 +219,8 @@
           "final_response": {
             "parts": [
               {
-                "text": "I checked the status of ticket T-0999, but it looks like that ticket does not exist or could not be found in our system. Would you like me to help you open a new support ticket?",
-                "thought_signature": "EmAKXgFpFH0TlO8j1dkh2osxtdfg5gRyuZqMTE9SN3IPB1eHIx_oIbNKdfmLLb09GFuPN3DEzL0vKpRlaj1U_ky1fYvbcOnQlHK_6ahVSWDMkWOH2OfdTnTWh6cLWlQnKs0="
+                "text": "Ticket T-0999 does not exist.",
+                "thought_signature": "EmAKXgFpFH0TeCTkfZh0bSt-NX1xeAJ2I73E1RyC7pY7cdNPMBY77d9RA36zxVHpEph5kDNIarlyQvhYSAs3rzNexXFIK_NgStb7WLqOTQMuRK51edUnSIWRPBmIhpS9DaE="
               }
             ],
             "role": "model"
@@ -233,13 +233,13 @@
                   "parts": [
                     {
                       "function_call": {
-                        "id": "call_280606",
+                        "id": "call_319550",
                         "args": {
                           "agent_name": "ticket_agent"
                         },
                         "name": "transfer_to_agent"
                       },
-                      "thought_signature": "EmAKXgFpFH0Trgf9rhMK7vc36N0tPEDQluuyN5Q1eQf5XYEXgwnvHfhkpa8Oorwjb0hrLkWX3xnAVlS0fHBGknA0nIqjexP2IsH70-ozmeh3v995SLbjs2rp291Eyrz0q7A="
+                      "thought_signature": "EmAKXgFpFH0TTb19QeSxqVbMwwyTy7VrZXwwi7AEBeS3cHIJhEY4FVMG1DIPgEK28mrWn_rqdZz25_gU6A3SMt-5XwKBdLkC930ruzgOvHORvguUo4onH4YK8W6Vji_-An0="
                     }
                   ],
                   "role": "model"
@@ -263,7 +263,7 @@
                   "parts": [
                     {
                       "function_response": {
-                        "id": "call_280606",
+                        "id": "call_319550",
                         "name": "transfer_to_agent",
                         "response": {
                           "result": null
@@ -280,27 +280,27 @@
                   "parts": [
                     {
                       "function_call": {
-                        "id": "call_97384",
+                        "id": "call_253481",
                         "args": {
                           "ticket_id": "T-0999"
                         },
                         "name": "get_ticket"
                       },
-                      "thought_signature": "EmAKXgFpFH0TLsPClP5HZfa72dCwQfspRXQ1pbMsr3_CqE3oVQmIk0PkixNU4M4owi45JjecJ3aBYjIuVI2E-bURzOYa-lPeJvaTHkV2-r8ybFgpCzC_D0V9sJhCpgO-jZM="
+                      "thought_signature": "EmAKXgFpFH0TNvkDs21AK01iaxxhff3EXQx95FqPMi4a9T9N5NpOMA2Uc5v3fVTWklRfMKHwXGhtY-J_VBW5QYSV4E1nGx_vkjj6qmQEm3eUYbfRd1pcF8O-c3ksaK1PFdU="
                     }
                   ],
                   "role": "model"
                 },
                 "usage_metadata": {
                   "candidates_token_count": 23,
-                  "prompt_token_count": 1410,
+                  "prompt_token_count": 1463,
                   "prompt_tokens_details": [
                     {
                       "modality": "TEXT",
-                      "token_count": 1410
+                      "token_count": 1463
                     }
                   ],
-                  "total_token_count": 1433
+                  "total_token_count": 1486
                 },
                 "model_version": "gemini-3.5-flash-lite"
               },
@@ -310,7 +310,7 @@
                   "parts": [
                     {
                       "function_response": {
-                        "id": "call_97384",
+                        "id": "call_253481",
                         "name": "get_ticket",
                         "response": {
                           "content": [],
@@ -327,76 +327,29 @@
               },
               {
                 "author": "ticket_agent",
-                "content": {
-                  "parts": [
-                    {
-                      "function_call": {
-                        "id": "call_150221",
-                        "args": {
-                          "agent_name": "coordinator"
-                        },
-                        "name": "transfer_to_agent"
-                      },
-                      "thought_signature": "EmAKXgFpFH0TwMMFZ7dgapEhc7eqOcc8Dd30xKbXcTkotkkFao97TUheLf-IjbddqDuCpPU4YYEXV63xsk67Bj3PblWbJBQ9F8M5kkSs7ZZSNhiIHcKrrsj2ZaYHv7C93U8="
-                    }
-                  ],
-                  "role": "model"
-                },
                 "usage_metadata": {
-                  "candidates_token_count": 20,
-                  "prompt_token_count": 1453,
+                  "candidates_token_count": 11,
+                  "prompt_token_count": 1506,
                   "prompt_tokens_details": [
                     {
                       "modality": "TEXT",
-                      "token_count": 1453
+                      "token_count": 1506
                     }
                   ],
-                  "total_token_count": 1473
-                },
-                "model_version": "gemini-3.5-flash-lite"
-              },
-              {
-                "author": "ticket_agent",
-                "content": {
-                  "parts": [
-                    {
-                      "function_response": {
-                        "id": "call_150221",
-                        "name": "transfer_to_agent",
-                        "response": {
-                          "result": null
-                        }
-                      }
-                    }
-                  ],
-                  "role": "user"
-                }
-              },
-              {
-                "author": "coordinator",
-                "usage_metadata": {
-                  "candidates_token_count": 44,
-                  "prompt_token_count": 1279,
-                  "prompt_tokens_details": [
-                    {
-                      "modality": "TEXT",
-                      "token_count": 1279
-                    }
-                  ],
-                  "total_token_count": 1323
+                  "total_token_count": 1517
                 },
                 "model_version": "gemini-3.5-flash-lite"
               }
             ]
           },
-          "creation_timestamp": 1791346356.9279912
+          "creation_timestamp": 1791445366.618005
         }
       ],
       "session_input": {
         "app_name": "helpdesk",
         "user_id": "demo-user"
       },
-      "creation_timestamp": 1791346360.561305
+      "creation_timestamp": 1791445370.312852
     }
   ],
   "creation_timestamp": 1791346264.0258172

@@ -25,7 +25,7 @@ Opening a ticket:
 
 Status and lists:
 - Answer "what is the status of T-0001" with get_ticket and "show my tickets" with list_tickets directly.
-- If a ticket id does not exist, say so.
+- If a ticket id does not exist, reply exactly: "Ticket <id> does not exist." and nothing else.
 
 Never end a turn without a reply to the employee. If the employee asks about anything that is not a
 support ticket (policy questions, facts about themselves), transfer to the coordinator instead of answering.

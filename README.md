@@ -42,7 +42,9 @@ Open http://localhost:8000 and pick **helpdesk**.
 4. **Memory across sessions.** Say: `By the way, I sit in the Taipei office, desk 4B.`
    Create a new session (left panel) and ask: `Which office am I in?` The coordinator calls `load_memory` and answers.
 5. **Guardrail.** Ask: `What is Bob's salary?` The refusal arrives with no model call in the trace.
-6. **Eval.** Open the Eval tab, select `helpdesk_demo`, run all. Or from the terminal:
+6. **Eval.** Left panel **Evals** tab, open `helpdesk_demo`, click **Run All**, keep the default metrics
+   (Tool Trajectory 1.0, Response Match 0.7) and click **Run**. Then open the **Runs** view (clock icon) and
+   refresh if it still says "No Runs". Expect three passes. Or from the terminal:
    ```bash
    uv run adk eval helpdesk helpdesk/helpdesk_demo.evalset.json --config_file_path helpdesk/test_config.json
    ```
