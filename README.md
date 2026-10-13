@@ -25,33 +25,14 @@ What it shows:
 ```bash
 uv sync
 cp .env.example helpdesk/.env   # paste your key into GOOGLE_API_KEY
-uv run adk web
+uv run adk web                  # open http://localhost:8000 and pick helpdesk
+
+uv run pytest                   # unit tests, never call Gemini
+uv run ruff check .
+uv run adk eval helpdesk helpdesk/helpdesk_demo.evalset.json --config_file_path helpdesk/test_config.json
 ```
 
-Open http://localhost:8000 and pick **helpdesk**.
-
-## Demo script (about 5 minutes)
-
-For the presenter walkthrough in Traditional Chinese (talking points and Q&A for a non-technical audience), see [DEMO.md](DEMO.md).
-
-1. **RAG with citation.** Ask: `How many days of annual leave do I get?`
-   The coordinator hands off to the knowledge agent, which searches the handbook and answers with
-   `Source: leave.md › Annual leave`. Open the Trace tab to show the handoff and the tool call.
-2. **Action with approval.** Say: `My laptop screen keeps flickering, please open a ticket for me.`
-   An approval dialog appears. Approve it and the agent reports `T-0001`. Open `mcp_server/tickets.json` to prove the write.
-   Try again with another problem and decline: the agent confirms nothing was created.
-3. **Read action, no approval.** Ask: `What is the status of that ticket?`
-4. **Memory across sessions.** Say: `By the way, I sit in the Taipei office, desk 4B.`
-   Create a new session (left panel) and ask: `Which office am I in?` The coordinator calls `load_memory` and answers.
-5. **Guardrail.** Ask: `What is Bob's salary?` The refusal arrives with no model call in the trace.
-6. **Eval.** Left panel **Evals** tab, open `helpdesk_demo`, click **Run All**, keep the default metrics
-   (Tool Trajectory 1.0, Response Match 0.7) and click **Run**. Then open the **Runs** view (clock icon) and
-   refresh if it still says "No Runs". Expect three passes. Or from the terminal:
-   ```bash
-   uv run adk eval helpdesk helpdesk/helpdesk_demo.evalset.json --config_file_path helpdesk/test_config.json
-   ```
-
-Reset between demos: `rm mcp_server/tickets.json`. Memory resets when the server restarts.
+Presenter walkthrough (Traditional Chinese, step by step with talking points): [DEMO.md](DEMO.md).
 
 ## Why an MCP ticket server?
 
@@ -91,18 +72,14 @@ and one demo turn uses 2 to 4 requests. If you hit `429 RESOURCE_EXHAUSTED`, swi
 
 ## How this was built
 
-Built with Claude Code, one step at a time, and the working notes are kept in the repo:
+With Claude Code and the [matt-pocock-skills](https://github.com/mattpocock/skills) flow. Each step's output is the next step's input, and all of it is in the repo.
 
-1. Design questions, glossary and decisions: `CONTEXT.md`, `docs/adr/`
-2. Spec, then six small tickets: `.scratch/helpdesk-demo/`
-3. One ticket at a time, each with unit tests: `tests/`
-4. Code review against the spec, then live checks in `adk web`
+| Step | Skill | What happens | Input → Output |
+|---|---|---|---|
+| 1 | `grill-with-docs` | Claude asks one design question at a time until nothing is ambiguous, then records terms and decisions | idea → `CONTEXT.md`, `docs/adr/` |
+| 2 | `to-spec` | Writes one spec: scope, non-goals, acceptance criteria | decisions → `.scratch/helpdesk-demo/spec.md` |
+| 3 | `to-tickets` | Slices the spec into small tickets that each ship on their own | spec → `.scratch/helpdesk-demo/issues/` |
+| 4 | `implement` | One ticket at a time: test first, code, `uv run pytest`, commit | ticket → `helpdesk/`, `mcp_server/`, `tests/` |
+| 5 | `code-review` | Reviews the diff against coding standards and against the spec, fixes applied, then live checks in `adk web` | code → fix commits (see git log) |
 
-`CLAUDE.md` holds the rules the agent follows in this repo. The git log follows the same order.
-
-## Develop
-
-```bash
-uv run pytest
-uv run ruff check .
-```
+`CLAUDE.md` holds the rules Claude reads in this repo.
