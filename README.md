@@ -5,15 +5,15 @@ entirely through the `adk web` developer UI and to run from a fresh clone with o
 
 What it shows:
 
-| Capability | How it appears in the demo |
-|---|---|
-| **RAG** | Policy answers come from handbook files, with a `Source:` citation. Trace shows the `search_handbook` call. |
-| **Actions over MCP** | Tickets are created and read through an in-repo MCP server that ADK launches over stdio. |
-| **Human approval** | The UI pops an approval dialog before `create_ticket` runs. Decline and nothing is written. |
-| **Multi-agent** | A coordinator hands off to a knowledge agent or a ticket agent. Visible in the agent graph and trace. |
-| **Guardrail** | Requests for another person's salary, password or address are refused before any model call. |
-| **Sessions + memory** | Sessions persist in the UI. A fact told in one session is recalled in a new one via `load_memory`. |
-| **Evaluation** | Three eval cases run from the Eval tab or `adk eval`, checking tool trajectory and response. |
+| Capability | Why it is needed | How it appears in the demo |
+|---|---|---|
+| **RAG** | Answers must come from company policy, not the model's guess | Policy answers come from handbook files, with a `Source:` citation. Trace shows the `search_handbook` call. |
+| **Actions over MCP** | A helpdesk that can only talk is not useful; it has to open and look up tickets in a real system | Tickets are created and read through an in-repo MCP server that ADK launches over stdio. |
+| **Human approval** | Writes to external systems need a person to confirm | The UI pops an approval dialog before `create_ticket` runs. Decline and nothing is written. |
+| **Multi-agent** | Each agent gets a small job and a short prompt, which routes better and is easier to change | A coordinator hands off to a knowledge agent or a ticket agent. Visible in the agent graph and trace. |
+| **Guardrail** | Some requests must be refused every time, cheaply, before the model sees them | Requests for another person's salary, password or address are refused before any model call. |
+| **Sessions + memory** | Employees should not repeat themselves across conversations | Sessions persist in the UI. A fact told in one session is recalled in a new one via `load_memory`. |
+| **Evaluation** | Proves behaviour did not drift after a prompt or code change | Three eval cases run from the Eval tab or `adk eval`, checking tool trajectory and response. |
 
 ## Prerequisites
 
