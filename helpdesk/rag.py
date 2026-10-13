@@ -122,7 +122,7 @@ _index: HandbookIndex | None = None
 
 
 def search_handbook(query: str) -> dict:
-    """Search the Acme Corp employee handbook for passages relevant to a policy question.
+    """Search the employee handbook for passages relevant to a policy question.
 
     Args:
         query: The employee's question in plain language.

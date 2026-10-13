@@ -4,7 +4,7 @@ from ..config import MODEL
 from ..guardrail import block_sensitive_requests
 from ..rag import search_handbook
 
-KNOWLEDGE_INSTRUCTION = """You are the Knowledge Agent for the Acme Corp employee helpdesk.
+KNOWLEDGE_INSTRUCTION = """You are the Knowledge Agent for the employee helpdesk.
 You answer company policy questions ONLY from the employee handbook.
 
 For every question:
@@ -24,7 +24,7 @@ themselves), transfer to the coordinator instead of answering.
 knowledge_agent = LlmAgent(
     name="knowledge_agent",
     model=MODEL,
-    description="Answers Acme Corp policy questions (leave, IT equipment, expenses, remote work) from the employee handbook, with citations.",
+    description="Answers company policy questions (leave, IT equipment, expenses, remote work) from the employee handbook, with citations.",
     instruction=KNOWLEDGE_INSTRUCTION,
     before_model_callback=block_sensitive_requests,
     tools=[search_handbook],

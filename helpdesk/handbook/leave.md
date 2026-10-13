@@ -1,6 +1,6 @@
 # Leave Policy
 
-This document covers paid time off for all full-time Acme Corp employees.
+This document covers paid time off for all full-time employees.
 
 ## Annual leave
 
@@ -22,5 +22,5 @@ A doctor's note is required for absences longer than 3 consecutive days.
 
 ## Public holidays
 
-Acme observes the public holidays of the country where your contracted office is located.
+The company observes the public holidays of the country where your contracted office is located.
 If a public holiday falls on a weekend, the following Monday is a day off.

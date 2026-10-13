@@ -1,4 +1,4 @@
-"""Acme ticket service: an MCP server over stdio, backed by one JSON file.
+"""Ticket service: an MCP server over stdio, backed by one JSON file.
 
 Run with `python mcp_server/tickets.py`. Set TICKETS_PATH to use a different file.
 Reset the store with `rm mcp_server/tickets.json`.
@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 
 TICKETS_PATH = Path(os.environ.get("TICKETS_PATH", HERE / "tickets.json"))
 
-mcp = MCPServer("acme-tickets")
+mcp = MCPServer("helpdesk-tickets")
 
 
 @mcp.tool()

@@ -22,7 +22,7 @@ _PRIVATE = (
     r"|home\s+address|(?:personal\s+)?(?:phone|mobile|cell)\s+number)"
 )
 # Possessives that refer to the Employee themselves or to the company, never to another person.
-_NOT_A_PERSON = r"(?!my\b|our\b|the\b|company\b|acme\b|office\b|team\b|it\b)"
+_NOT_A_PERSON = r"(?!my\b|our\b|the\b|company\b|office\b|team\b|it\b)"
 
 RULES = [
     re.compile(p, re.IGNORECASE)

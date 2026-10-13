@@ -1,6 +1,6 @@
 # IT Equipment
 
-How Acme Corp issues, replaces and supports company hardware.
+How the company issues, replaces and supports company hardware.
 
 ## Standard laptop
 

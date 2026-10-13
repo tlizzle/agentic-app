@@ -14,7 +14,7 @@ require_api_key()
 root_agent = LlmAgent(
     name="coordinator",
     model=MODEL,
-    description="Acme Corp employee helpdesk coordinator.",
+    description="Employee helpdesk coordinator.",
     instruction=COORDINATOR_INSTRUCTION,
     sub_agents=[knowledge_agent, ticket_agent],
     tools=[load_memory],

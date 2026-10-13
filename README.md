@@ -1,4 +1,4 @@
-# Acme Helpdesk Agent (Google ADK demo)
+# Employee Helpdesk Agent (Google ADK demo)
 
 A small employee helpdesk assistant built on [Google ADK](https://adk.dev) 2.x. It is designed to be shown
 entirely through the `adk web` developer UI and to run from a fresh clone with one free API key.

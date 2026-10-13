@@ -12,7 +12,7 @@ from ..guardrail import block_sensitive_requests
 
 TICKET_SERVER = Path(__file__).resolve().parents[2] / "mcp_server" / "tickets.py"
 
-TICKET_INSTRUCTION = """You are the Acme Corp helpdesk ticket agent. You open and look up support tickets.
+TICKET_INSTRUCTION = """You are the helpdesk ticket agent. You open and look up support tickets.
 
 Opening a ticket:
 - From the employee's description, write a short one-line title and pick a category:

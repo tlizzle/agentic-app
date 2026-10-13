@@ -1,6 +1,6 @@
 # Expenses
 
-Rules for spending company money and getting reimbursed at Acme Corp.
+Rules for spending company money and getting reimbursed at the company.
 
 ## Spending limits
 
