@@ -34,15 +34,6 @@ uv run adk eval helpdesk helpdesk/helpdesk_demo.evalset.json --config_file_path 
 
 Presenter walkthrough (Traditional Chinese, step by step with talking points): [DEMO.md](DEMO.md).
 
-## Why an MCP ticket server?
-
-The ticket server is a stand-in for Jira or ServiceNow, deliberately tiny but a real MCP server.
-
-- **Decoupling.** The agent only sees tool names and schemas. Swap the toy server for the real system and the agent code does not change.
-- **A standard, not glue code.** MCP is the open protocol supported across Anthropic, Google and OpenAI tooling. Any MCP client can use the same server.
-- **A safe place for control.** Validation and permissions live in the server, outside the prompt. Approval is attached to the write tool only, so reads stay frictionless.
-- **Testable without a model.** The ticket logic has its own unit tests, which is how an agent system stays reliable as it grows.
-
 ## Layout
 
 ```
