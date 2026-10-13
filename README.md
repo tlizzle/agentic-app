@@ -89,6 +89,17 @@ and one demo turn uses 2 to 4 requests. If you hit `429 RESOURCE_EXHAUSTED`, swi
 `gemini-3.5-flash` or `gemini-flash-latest` and restart. Check your limits at https://aistudio.google.com/rate-limit. Transient
 `503` responses are retried automatically. Embeddings are cached in `.cache/` so the handbook is embedded once.
 
+## How this was built
+
+Built with Claude Code, one step at a time, and the working notes are kept in the repo:
+
+1. Design questions, glossary and decisions: `CONTEXT.md`, `docs/adr/`
+2. Spec, then six small tickets: `.scratch/helpdesk-demo/`
+3. One ticket at a time, each with unit tests: `tests/`
+4. Code review against the spec, then live checks in `adk web`
+
+`CLAUDE.md` holds the rules the agent follows in this repo. The git log follows the same order.
+
 ## Develop
 
 ```bash
